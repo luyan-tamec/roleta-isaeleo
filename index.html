@@ -164,6 +164,11 @@
     .layout { flex-direction: column; align-items: center; }
     #resultadoOverlay { font-size: 1.4rem; padding: 10px 16px; }
   }
+  .musica {
+    opacity: 1;
+    transform: scale(1);
+    background-color: orange
+  }
 </style>
 </head>
 <body>
@@ -176,7 +181,7 @@
       <input id="nome" type="text" placeholder="Digite um nome">
       <input id="quantidade" type="number" min="1" value="1" style="width:80px;">
       <button id="btnAdicionar">Adicionar</button>
-      <input id="tempo" type="number" min="1" placeholder="Tempo (seg)" style="width:110px;" value="5">
+      <input id="tempo" type="number" min="1" placeholder="Tempo (seg)" style="width:110px;" value="">
       <button id="btnIniciar" style="background-color:#43a047;color:#fff;">Iniciar</button>
       <button id="btnParar" style="background-color:#e53935;color:#fff;">Parar</button>
     </div>
@@ -193,7 +198,7 @@
       <button id="btnExportar">📤 Exportar CSV</button>
       <button id="btnFullscreen">🖥️ Tela Cheia</button>
       <button id="btnLimpar">🧹 Limpar Tudo</button>
-      <button id="btnMusica">🎵 Tocar Música</button>
+      <button class="musica" id="btnMusica">🎵 Tocar Música</button>
       <label style="display:flex;align-items:center;gap:6px;color:#ccc;">
         🔊
         <input type="range" id="volumeMusica" min="0" max="100" value="50" style="width:100px;">
