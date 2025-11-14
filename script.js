@@ -7,6 +7,14 @@ const tempo = document.getElementById('tempo');
 const overlay = document.getElementById('resultadoOverlay');
 const lista = document.getElementById('listaNomes');
 const csv = document.getElementById('inputCSV');
+const paletaNeutra = [
+  "#e0e0e0", "#cfcfcf", "#bdbdbd", "#9e9e9e",
+  "#8d8d8d", "#7d7d7d", "#6e6e6e", "#5e5e5e","#faf8f5", "#f2eee8", "#e9e4da", "#ded7cc",
+  "#d2cbbe", "#c7c0b4", "#bcb5a9", "#b0a99f",
+  "#a59e95", "#9a938a", "#8f887f", "#847d75","#f2f4f7", "#e6e9ed", "#d9dde2", "#ccd1d6",
+  "#c0c5cb", "#b3b9c0", "#a7adb4", "#9aa1a9",
+  "#8e959d", "#828992", "#767d86", "#6a717a"
+];
 
 /* state */
 let nomes = [];
@@ -105,6 +113,14 @@ function salvar(){
   localStorage.setItem('roleta_nomes', JSON.stringify(nomes));
   localStorage.setItem('roleta_cores', JSON.stringify(cores));
 }
+// carregar modo salvo
+const modoSalvo = localStorage.getItem("modoCor") || "colorido";
+document.getElementById("modoCor").value = modoSalvo;
+
+// quando mudar, salvar no storage
+document.getElementById("modoCor").addEventListener("change", () => {
+  localStorage.setItem("modoCor", document.getElementById("modoCor").value);
+});
 
 function carregar(){
   const n = JSON.parse(localStorage.getItem('roleta_nomes') || '[]');
@@ -148,17 +164,34 @@ function remover(i){
 function adicionar(){
   const n = nome.value.trim();
   let q = parseInt(qtd.value) || 1;
-  if(!n){ alert('Digite um nome.'); return; }
-  for(let i=0;i<q;i++){
-    nomes.push(n);
-    cores.push(corAleatoria());
+
+  // pega o modo salvo
+  const modo = localStorage.getItem("modoCor") || "colorido";
+
+  if(!n){
+    alert('Digite um nome.');
+    return;
   }
+
+  for(let i = 0; i < q; i++){
+    nomes.push(n);
+
+    if(modo === "colorido"){
+      cores.push(corAleatoria());
+    } else {
+      cores.push(paletaNeutra[Math.floor(Math.random() * paletaNeutra.length)]);
+    }
+  }
+
   nome.value = '';
   qtd.value = 1;
+
   salvar();
   desenhar();
   atualizar();
 }
+
+
 
 /* desenho da roleta */
 function desenhar(d=-1,b=1){
@@ -274,7 +307,7 @@ function girar(){
 /* desaceleração suave */
 function suave(){
   let step = ()=>{
-    vel *= 0.99;
+    vel *= 0.986;
     if(vel < 0.0005) vel = 0;
     angulo += vel;
 
