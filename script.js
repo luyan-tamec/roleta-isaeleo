@@ -193,6 +193,7 @@ function adicionar(){
 
 
 
+
 /* desenho da roleta */
 function desenhar(d=-1,b=1){
   const w = canvas.width, h = canvas.height;
