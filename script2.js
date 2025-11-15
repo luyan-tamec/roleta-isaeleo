@@ -173,14 +173,14 @@ function corAleatoria(){
 
 /* persistência */
 function salvar(){
-  localStorage.setItem('roleta_nomes', JSON.stringify(nomes));
-  localStorage.setItem('roleta_cores', JSON.stringify(cores));
+  localStorage.setItem('roleta_nomes2', JSON.stringify(nomes));
+  localStorage.setItem('roleta_cores2', JSON.stringify(cores));
   localStorage.setItem("modoCor", modoCor);
 }
 
 function carregar(){
-  nomes = JSON.parse(localStorage.getItem('roleta_nomes') || '[]');
-  cores = JSON.parse(localStorage.getItem('roleta_cores') || '[]');
+  nomes = JSON.parse(localStorage.getItem('roleta_nomes2') || '[]');
+  cores = JSON.parse(localStorage.getItem('roleta_cores2') || '[]');
   if(cores.length !== nomes.length) cores = nomes.map(()=>corAleatoria());
   atualizar();
   desenhar();
