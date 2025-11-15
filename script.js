@@ -172,14 +172,14 @@ function corAleatoria(){
 
 /* salvar nomes/cores no storage */
 function salvar(){
-  localStorage.setItem('roleta_nomes', JSON.stringify(nomes));
-  localStorage.setItem('roleta_cores', JSON.stringify(cores));
+  localStorage.setItem('roleta_nomes1', JSON.stringify(nomes));
+  localStorage.setItem('roleta_cores1', JSON.stringify(cores));
 }
 
 /* carregar nomes/cores e vencedores do storage */
 function carregar(){
-  nomes = JSON.parse(localStorage.getItem('roleta_nomes') || '[]');
-  cores = JSON.parse(localStorage.getItem('roleta_cores') || '[]');
+  nomes = JSON.parse(localStorage.getItem('roleta_nomes1') || '[]');
+  cores = JSON.parse(localStorage.getItem('roleta_cores1') || '[]');
   if(cores.length !== nomes.length) cores = nomes.map(()=>corAleatoria());
   atualizar();
   desenhar();
