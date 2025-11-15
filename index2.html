@@ -2,7 +2,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <title>Roleta de Sorteio</title>
+  <title>Roleta de Sorteio (Twitch)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="tmi.min.js"></script>
   <link rel="stylesheet" href="style.css">
   <style>
     /* Botão no canto esquerdo */
@@ -22,21 +24,20 @@
   </style>
 </head>
 <body>
-
-<a id="btnLeft" href="index2.html">Roleta 2</a>
-
+<a id="btnLeft" href="index.html">Voltar</a>
 <div class="layout">
   <div class="painel">
     <h1>Roleta de Sorteio</h1>
 
     <div class="controls">
       <select id="modoCor">
-      <option value="colorido" selected>🏳‍🌈 cores do vale</option>
-      <option value="neutro">⚪ cores Neutras</option>
+        <option value="colorido" selected>🏳‍🌈 cores do vale</option>
+        <option value="neutro">⚪ Neutro</option>
       </select>
       <input id="nome" type="text" placeholder="Digite um nome">
       <input id="quantidade" type="number" min="1" value="1" style="width:80px;">
       <button id="btnAdicionar">Adicionar</button>
+
       <input id="tempo" type="number" min="1" placeholder="Tempo (seg)" style="width:110px;">
       <button id="btnIniciar" style="background-color:#43a047;color:#fff;">Iniciar</button>
       <button id="btnParar" style="background-color:#e53935;color:#fff;">Parar</button>
@@ -59,10 +60,39 @@
 
       <button class="musica" id="btnMusica">🎵 Tocar Música</button>
 
-      <label style="display:flex;align-items:center;gap:6px;color:#ccc;">
-        🔊
-        <input type="range" id="volumeMusica" min="0" max="100" value="50" style="width:100px;">
-      </label>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button id="btnTema">Tema</button>
+
+        <label style="display:flex;flex-direction:column;align-items:flex-start;color:#ccc;">
+          🔊 Música
+          <input type="range" id="volMusica" min="0" max="100" value="50" style="width:80px;">
+        </label>
+
+        <label style="display:flex;flex-direction:column;align-items:flex-start;color:#ccc;">
+          🔔 seta
+          <input type="range" id="volTick" min="0" max="100" value="60" style="width:80px;">
+        </label>
+
+        <label style="display:flex;flex-direction:column;align-items:flex-start;color:#ccc;">
+          🎯 Som winner
+          <input type="range" id="volFinal" min="0" max="100" value="80" style="width:80px;">
+        </label>
+      </div>
+    </div>
+
+    <!--capturar chat Twitch -->
+    <div id="twitchControls" style="margin-top:12px;background:rgba(255,255,255,0.04);padding:8px;border-radius:8px;">
+      <strong style="display:block;margin-bottom:6px;">Capturar Chat Twitch (chat)</strong>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+        <input id="twitchChannel" placeholder="Canal Twitch (ex: meu_canal)" style="padding:8px;border-radius:6px;border:none;outline:none;">
+        <input id="twitchKeyword" placeholder="Palavra-chave (ex: !participar)" style="padding:8px;border-radius:6px;border:none;outline:none;">
+        <button id="btnToggleTwitch">Conectar Twitch</button>
+        <span id="twitchStatus" style="color:#ccc;margin-left:8px;">Desconectado</span>
+      </div>
+      <div style="margin-top:8px;color:#bbb;font-size:13px;">
+        os usuarios que digitam a chave serao adicionados a roleta!
+        Apos a adicao dos usuarios desconecte o chat.
+      </div>
     </div>
 
     <div id="ultimosVencedores">
@@ -72,6 +102,7 @@
     </div>
 
     <div id="listaNomes"></div>
+
   </div>
 
   <div id="container">
@@ -82,6 +113,5 @@
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
