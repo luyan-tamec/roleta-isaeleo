@@ -328,7 +328,7 @@ function girar(){
 
 function suave(){
   let step = () => {
-    vel *= 0.96;
+    vel *= 0.98;
     if(vel < 0.0005) vel = 0;
 
     angulo += vel;
