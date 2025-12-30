@@ -65,7 +65,7 @@
       transform: translate(-50%, -50%);
       pointer-events: none;
       transition: width 0.25s ease, height 0.25s ease;
-      filter: opacity(0.8);
+
 
     }
 
@@ -95,7 +95,7 @@
 
     .blocoessencial {
       background-color: rgba(204, 38, 38, 0);
-      border: solid 4px rgb(255, 255, 255,0.2);
+      border: solid 4px rgb(255, 255, 255, 0.2);
       border-radius: 30px;
       padding: 10px;
       display: flex;
@@ -105,10 +105,11 @@
       margin-bottom: 15px;
       margin: 1px;
     }
+
   </style>
 </head>
 
-<body>
+<body id="fundo">
   <!--<div class="botoesmenu">
     <a id="btnLeft" href="index2.html">Roleta com captura de chat</a>
     <a id="btnLeft2" href="SorteadorTwitch.html">sorteador com captura de chat</a>
@@ -116,9 +117,9 @@
   <div class="layout">
     <div class="painel">
       <h1 id="titulo" style="margin:20px">Roleta Rindo e Apoiando!!</h1>
-      <div class="cartao">
+      <div class="cartao" id="painel">
         <div class="controls">
-
+          <button id="btnOcultarPainel">🙈 Ocultar Painel</button>
           <button id="btnTema">Tema</button>
           <select id="modoCor">
             <option value="colorido" selected>🏳‍🌈 cores do vale</option>
@@ -131,7 +132,7 @@
             <button id="btnAdicionar">Adicionar</button>
             <input id="tempo" type="number" min="1" placeholder="Tempo (seg)" style="width:110px;">
             <button class="btnembaralhar" id="btnEmbaralhar">🔀 Embaralhar</button>
-            <button id="btnIniciar" style="background-color:#43a047;color:#fff;">Iniciar</button>
+            <button id="btnIniciar" style="background-color:#43a047;color:#fff;" onclick="iniciar()">Iniciar</button>
             <button id="btnParar" style="background-color:#e53935;color:#fff;">Parar</button>
           </div>
         </div>
@@ -188,13 +189,16 @@
       <div id="resultadoOverlay"></div>
     </div>
   </div>
+  <button id="btnMostrarPainel" style="display:none;">
+    📋 Mostrar Painel
+  </button>
 
   <script src="script.js"></script>
   <script>
     const toggleBtn = document.getElementById('toggleChat');
     const chatBox = document.getElementById('chatBox');
 
-    // Estado inicial explícito
+
     let chatVisivel = false;
 
     toggleBtn.addEventListener('click', () => {
@@ -203,21 +207,64 @@
       if (chatVisivel) {
         chatBox.style.display = 'block';
         toggleBtn.textContent = 'Esconder Chat';
-        document.getElementById('titulo').textContent = 'Carregando chat';
-
-
-        setInterval(() => {
-          document.getElementById('titulo').textContent = 'Roleta Rindo e Apoiando!!';
-        }, 2000);
 
       } else {
         chatBox.style.display = 'none';
         toggleBtn.textContent = 'Mostrar Chat';
       }
     });
+
+    const btnOcultar = document.getElementById('btnOcultarPainel');
+    const btnMostrar = document.getElementById('btnMostrarPainel');
+
+    btnOcultar.addEventListener('click', () => {
+      document.body.classList.add('painel-oculto');
+      btnMostrar.style.display = 'block';
+    });
+
+    btnMostrar.addEventListener('click', () => {
+      document.body.classList.remove('painel-oculto');
+      btnMostrar.style.display = 'none';
+
+      clearInterval(intervaloId);
+      intervaloId = null;
+      roleta.style.borderColor = '#f6f0f3ff';
+      roleta.style.boxShadow = `0 0 0px #ffffffff`;
+      roleta.style.backgroundColor = 'transparent';
+      painel.style.boxShadow = `0 0 0px #ffffffff`;
+      fundo.style.background = '#000000b8';
+
+    });
+
+    btninicio = document.getElementById('btnIniciar');
+    btnparar = document.getElementById('btnParar');
+
+    btninicio.addEventListener('click', () => {
+      setTimeout(() => {
+        document.body.classList.add('painel-oculto');
+        btnMostrar.style.display = 'block';
+
+        const roleta = document.getElementById('roleta');
+      const painel = document.getElementById('painel');
+      const fundo = document.getElementById('fundo');
+      
+      
+    
+      intervaloId = setInterval(() => {
+        const cor = `hsl(${Math.floor(Math.random() * 360)}, 70%, 55%)`;
+      roleta.style.borderColor = cor;
+
+      roleta.style.boxShadow = `0 0 40px ${cor}`;
+      painel.style.boxShadow = `0 0 40px ${cor}`;
+      fundo.style.background = cor;
+      
+      
+      }, 400);
+
+      }, 1300);
+      
+    });
   </script>
-
-
 </body>
 
 </html>

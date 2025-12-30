@@ -1,3 +1,4 @@
+
 const PREFIX = "r1_";
 
 const canvas = document.getElementById('roleta');
@@ -10,7 +11,7 @@ const lista = document.getElementById('listaNomes');
 const csv = document.getElementById('inputCSV');
 
 const imagemCentro = new Image();
-imagemCentro.src = 'centro.png'; // PNG ou WEBP com fundo transparente
+imagemCentro.src = 'centro.png';
 
 
 const paletaNeutra = ["#fafafa", "#f5f5f5", "#f0f0f0", "#ebebeb", "#e0e0e0", "#d7d7d7", "#cfcfcf", "#c7c7c7", "#bdbdbd", "#b3b3b3", "#a9a9a9", "#9e9e9e", "#8f8f8f", "#858585", "#7d7d7d", "#757575", "#6e6e6e", "#666666", "#5e5e5e", "#faf8f5", "#f2eee8", "#e9e4da", "#ded7cc", "#d2cbbe", "#c7c0b4", "#bcb5a9", "#b0a99f", "#a59e95", "#9a938a", "#8f887f", "#847d75", "#7a6f6a", "#6f645e", "#645952", "#5a4f48", "#f2f4f7", "#eceff2", "#e6e9ed", "#dfe3e8", "#d9dde2", "#d1d6dc", "#ccd1d6", "#c5cbd2", "#c0c5cb", "#b8bfc7", "#b3b9c0", "#adb3ba", "#a7adb4", "#a1a7ae", "#9aa1a9", "#949aa3", "#8e959d", "#878e96", "#828992", "#7b828b", "#767d86", "#707780", "#6a717a", "#646b74", "#fbfaf8", "#f8f6f3", "#f3f1ed", "#eeeae6", "#e9e5df", "#e3ded8", "#ddd8d2", "#d7d2cc", "#cfc7c0", "#e2ae81ff", "#bdb5ae", "#5b68a7ff", "#aba39c", "#a29a93", "#84481bff", "#908781"];
@@ -159,9 +160,12 @@ if (btnTema) {
     localStorage.setItem(PREFIX + "tema", tema);
     aplicarTema();
     if (titulo.textContent === "Roleta Rindo e Apoiando!!") {
-      titulo.textContent = "Quem sao eles?";
+      titulo.textContent = "Roleta Rindo e Apoiando!!!";
+
     } else {
       titulo.textContent = "Roleta Rindo e Apoiando!!";
+      clearInterval(intervaloId);
+      intervaloId = null;
     }
   });
 }
@@ -203,14 +207,29 @@ function gerarBuffer() {
     bufferCtx.stroke();
     bufferCtx.save();
     bufferCtx.translate(cx, cy);
+
+
     bufferCtx.rotate(ini + ap / 2);
-    bufferCtx.textAlign = 'right';
-    bufferCtx.fillStyle = '#000';
+
+
+    bufferCtx.textAlign = 'center';
+    bufferCtx.textBaseline = 'middle';
+    bufferCtx.fillStyle = '#000000ff';
+
     let nm = nomes[i] || '';
-    bufferCtx.font = `bold ${(nm.length > 18) ? 12 : 16}px Arial`;
+
+
+    bufferCtx.font = `bold ${nomes.length > 48 ? 11 : 15}px Arial`;
+    bufferCtx.globalAlpha = nomes.length > 240 ? 0.3 : 1;
+
+
     if (nm.length > 24) nm = nm.slice(0, 21) + '...';
-    bufferCtx.fillText(nm, r - 45, 8);
+
+
+    bufferCtx.fillText(nm, r * 0.58, 0);
+
     bufferCtx.restore();
+
   }
   bufferCtx.beginPath();
   bufferCtx.arc(cx, cy, r, 0, 2 * Math.PI);
@@ -261,6 +280,40 @@ function tick() {
   }
 }
 
+let mouseDown = false;
+let iniciouArraste = false;
+let startX = 0;
+let startY = 0;
+const LIMIAR = 130; 
+
+canvas.addEventListener('mousedown', (e) => {
+  if (e.button !== 0) return; 
+  mouseDown = true;
+  iniciouArraste = false;
+  startX = e.clientX;
+  startY = e.clientY;
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  if (!mouseDown || girando) return;
+
+  const dx = Math.abs(e.clientX - startX);
+  const dy = Math.abs(e.clientY - startY);
+
+  if (dx > LIMIAR || dy > LIMIAR) {
+    iniciouArraste = true;
+  }
+});
+
+canvas.addEventListener('mouseup', () => {
+  if (mouseDown && iniciouArraste && !girando) {
+    girar();
+  }
+
+  mouseDown = false;
+  iniciouArraste = false;
+});
+
 function girar() {
   if (nomes.length < 1) {
     alert('Adicione pelo menos um nome.');
@@ -294,6 +347,7 @@ function girar() {
     giroFrameId = requestAnimationFrame(loop);
   }
   giroFrameId = requestAnimationFrame(loop);
+  
 }
 
 function parar() {
@@ -307,7 +361,7 @@ function parar() {
 function suave() {
   if (vel <= 0) vel = 0.001;
   function step() {
-    vel *= 0.978;
+    vel *= 0.988;
     if (vel < 0.0005) vel = 0;
     angulo += vel;
     tick();
@@ -333,6 +387,20 @@ function suave() {
         tocandoMusica = false;
         document.getElementById('btnMusica').textContent = '🎵 Tocar Música';
       }, 3000);
+      setTimeout(() => {
+        document.body.classList.remove('painel-oculto');
+        btnMostrar.style.display = 'none';
+
+
+      clearInterval(intervaloId);
+      intervaloId = null;
+      roleta.style.borderColor = '#f6f0f3ff';
+      roleta.style.boxShadow = `0 0 0px #ffffffff`;
+      roleta.style.backgroundColor = 'transparent';
+      painel.style.boxShadow = `0 0 0px #ffffffff`;
+      fundo.style.background = '#000000b8';
+    
+      }, 1000);
       destacar(i);
       mostrarVencedor(v);
     }
@@ -388,8 +456,8 @@ function atualizarCentro() {
 
   const total = nomes.length;
 
-  const min = 10;   // tamanho mínimo (px)
-  const max = 160;  // tamanho máximo (px)
+  const min = 10;   
+  const max = 160;  
 
   // crescimento suave
   let tamanho = min + total * 0.6;
@@ -594,5 +662,9 @@ window.addEventListener('resize', ajustarCanvas);
 
 ajustarCanvas();
 carregar();
+
+
+
+
 
 
