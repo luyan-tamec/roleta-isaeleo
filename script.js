@@ -116,7 +116,7 @@ document.getElementById('btnMusica').onclick = () => {
       document.getElementById('btnMusica').textContent = '⏸️ Parar Música';
     }).catch(() => { });
   } else {
-    musica.pause();
+    musica.pause()
     tocandoMusica = false;
     document.getElementById('btnMusica').textContent = '🎵 Tocar Música';
   }
@@ -400,7 +400,7 @@ function suave() {
       painel.style.boxShadow = `0 0 0px #ffffffff`;
       fundo.style.background = '#000000b8';
     
-      }, 1000);
+      }, 2000);
       destacar(i);
       mostrarVencedor(v);
     }

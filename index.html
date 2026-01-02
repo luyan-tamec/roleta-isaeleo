@@ -5,7 +5,6 @@
   <meta charset="utf-8" />
   <title>Roleta Rindo e Apoiando!</title>
   <link rel="stylesheet" href="style.css">
-  <meta name="p:domain_verify" content="60aa57b0e5c3a7a1291e2ef2a777a6eb"/>
   <style>
     /* Botão no canto esquerdo */
     #btnLeft {
@@ -106,7 +105,23 @@
       margin-bottom: 15px;
       margin: 1px;
     }
+    .caixacheck + label {
+      font-size: 12px;
+      line-height: 12px;
+      text-align: left;
+    }
+    .caixacheck {
+      width: 20px;
+      height: 20px;
+    }
+    .caixacheck +
 
+    label {
+      color: #ccc;
+      user-select: none;
+    } 
+
+    
   </style>
 </head>
 
@@ -121,6 +136,8 @@
       <div class="cartao" id="painel">
         <div class="controls">
           <button id="btnOcultarPainel">🙈 Ocultar Painel</button>
+          <input class="caixacheck" type="checkbox" id="meucheck" checked>
+            <label for="meucheck">ocultar <br> painel <br>automaticamente</label>
           <button id="btnTema">Tema</button>
           <select id="modoCor">
             <option value="colorido" selected>🏳‍🌈 cores do vale</option>
@@ -135,6 +152,7 @@
             <button class="btnembaralhar" id="btnEmbaralhar">🔀 Embaralhar</button>
             <button id="btnIniciar" style="background-color:#43a047;color:#fff;" onclick="iniciar()">Iniciar</button>
             <button id="btnParar" style="background-color:#e53935;color:#fff;">Parar</button>
+            
           </div>
         </div>
 
@@ -241,29 +259,26 @@
     btnparar = document.getElementById('btnParar');
 
     btninicio.addEventListener('click', () => {
-      setTimeout(() => {
-        document.body.classList.add('painel-oculto');
-        btnMostrar.style.display = 'block';
+      const checkOcultar = document.getElementById('meucheck');
+      if (checkOcultar.checked) {
+        setTimeout(() => {
+          document.body.classList.add('painel-oculto');
+          btnMostrar.style.display = 'block';
 
-        const roleta = document.getElementById('roleta');
-      const painel = document.getElementById('painel');
-      const fundo = document.getElementById('fundo');
-      
-      
-    
-      intervaloId = setInterval(() => {
-        const cor = `hsl(${Math.floor(Math.random() * 360)}, 70%, 55%)`;
-      roleta.style.borderColor = cor;
+          const roleta = document.getElementById('roleta');
+          const painel = document.getElementById('painel');
+          const fundo = document.getElementById('fundo');
 
-      roleta.style.boxShadow = `0 0 40px ${cor}`;
-      painel.style.boxShadow = `0 0 40px ${cor}`;
-      fundo.style.background = cor;
-      
-      
-      }, 400);
+          intervaloId = setInterval(() => {
+            const cor = `hsl(${Math.floor(Math.random() * 360)}, 70%, 55%)`;
+            roleta.style.borderColor = cor;
 
-      }, 1300);
-      
+            roleta.style.boxShadow = `0 0 40px ${cor}`;
+            painel.style.boxShadow = `0 0 40px ${cor}`;
+            fundo.style.background = cor;
+          }, 1300);
+        },1200);
+      }
     });
   </script>
 </body>
