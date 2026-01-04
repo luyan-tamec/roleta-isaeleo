@@ -72,7 +72,10 @@
 
 
     .centrochat {
-      background-color: rgb(255, 255, 255, 0.8);
+      background-image: url("gato1.png") ;
+      background-size: contain;
+
+      
       position: absolute;
       width: 300px;
       height: 110px;
@@ -87,9 +90,11 @@
 
     #chatBox {
       display: none;
+      
     }
 
     iframe {
+      
       width: 100%;
     }
 
@@ -105,23 +110,34 @@
       margin-bottom: 15px;
       margin: 1px;
     }
-    .caixacheck + label {
+
+    .caixacheck+label {
       font-size: 12px;
       line-height: 12px;
       text-align: left;
+
+
     }
+
     .caixacheck {
       width: 20px;
-      height: 20px;
+      height: 25px;
+      margin: 1px;
+      margin-top: 6px;
+
+
     }
-    .caixacheck +
 
-    label {
-      color: #ccc;
+    .caixacheck+label {
+      color: #ffffff;
       user-select: none;
-    } 
 
-    
+    }
+
+    input[type="checkbox"] {
+      accent-color: #d108ac;
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -131,13 +147,16 @@
     <a id="btnLeft2" href="SorteadorTwitch.html">sorteador com captura de chat</a>
   </div>-->
   <div class="layout">
+    
     <div class="painel">
-      <h1 id="titulo" style="margin:20px">Roleta Rindo e Apoiando!!</h1>
+      
       <div class="cartao" id="painel">
+        <h1 id="titulo" style="margin:20px">Roleta Rindo e Apoiando!!</h1>
+
         <div class="controls">
           <button id="btnOcultarPainel">🙈 Ocultar Painel</button>
           <input class="caixacheck" type="checkbox" id="meucheck" checked>
-            <label for="meucheck">ocultar <br> painel <br>automaticamente</label>
+          <label for="meucheck">ocultar <br> painel <br>automaticamente</label>
           <button id="btnTema">Tema</button>
           <select id="modoCor">
             <option value="colorido" selected>🏳‍🌈 cores do vale</option>
@@ -152,7 +171,7 @@
             <button class="btnembaralhar" id="btnEmbaralhar">🔀 Embaralhar</button>
             <button id="btnIniciar" style="background-color:#43a047;color:#fff;" onclick="iniciar()">Iniciar</button>
             <button id="btnParar" style="background-color:#e53935;color:#fff;">Parar</button>
-            
+
           </div>
         </div>
 
@@ -201,7 +220,7 @@
     <div id="container">
       <div class="seta"></div>
       <canvas id="roleta"></canvas>
-      <img src="centro.png" class="centro" />
+      <img src="centro.png" class="centro">
       <div id="chatBox">
         <iframe class="centrochat" src="chat.html" frameborder="0"></iframe>
       </div>
@@ -277,7 +296,7 @@
             painel.style.boxShadow = `0 0 40px ${cor}`;
             fundo.style.background = cor;
           }, 1300);
-        },1200);
+        }, 1200);
       }
     });
   </script>

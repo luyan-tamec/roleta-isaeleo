@@ -8,6 +8,7 @@ body {
   background:#111;
   overflow-x: hidden;
   position: relative;
+  
 }
 
 body::before {
@@ -16,8 +17,9 @@ body::before {
   inset: 0;
   background: url('leoeisa.png')
     center/cover no-repeat;
-  filter: blur(9px) brightness(0.6);
+  filter: blur(2px) brightness(0.6);
   z-index: -2;
+  transition: all 0.7s;
 }
 
 body::after {
@@ -48,7 +50,10 @@ body::after {
 }
 
 h1 {
-  font-size: 1.5rem;
+  background-color: #c9c2c24d;
+  padding: 1px;
+  border-radius: 20px;
+  font-size: 1.2rem;
   margin-bottom: 4px;
   text-align: center;
   text-shadow: 10px 10px 19px rgba(239, 234, 238, 0.9);
@@ -126,10 +131,6 @@ button:hover { transform: scale(1.1); }
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 2s ease-in-out;
-  
-  
-  
 }
 #container:hover  {
   cursor: pointer;
@@ -267,6 +268,7 @@ body.tema-claro #resultadoOverlay {
 }
 
 body.painel-oculto .painel {
+  transition: all 0.5s ease-in-out;
   display: none;
   
 }
@@ -277,11 +279,24 @@ body.painel-oculto .layout {
   margin: 0;
   align-items: center;
   justify-content: center;
- 
+  margin-top: 30px;
+  
+
+}
+body.painel-oculto::before {
+  background-image: url("centro.png");
+  background-size: contain;
+  background-repeat: repeat;
+  filter: blur(6px);
+  transition: all 0.7s;
 }
 
+
 body.painel-oculto #container {
-  margin: 0; 
+  margin: 0;   
+  z-index: 2;
+ 
+  
 }
 
 
