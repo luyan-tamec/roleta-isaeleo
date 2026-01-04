@@ -76,12 +76,12 @@ select {
   border-radius: 8px;
   border: none;
   outline: none;
-  font-size: 13px;
+  font-size: 12px;
   border-radius: 15px;
 }
 
 button {
-  padding: 12px 14px;
+  padding: 11px 13px;
   border-radius: 10px;
   border: none;
   cursor: pointer;
