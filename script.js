@@ -284,10 +284,10 @@ let mouseDown = false;
 let iniciouArraste = false;
 let startX = 0;
 let startY = 0;
-const LIMIAR = 130; 
+const LIMIAR = 130;
 
 canvas.addEventListener('mousedown', (e) => {
-  if (e.button !== 0) return; 
+  if (e.button !== 0) return;
   mouseDown = true;
   iniciouArraste = false;
   startX = e.clientX;
@@ -347,7 +347,7 @@ function girar() {
     giroFrameId = requestAnimationFrame(loop);
   }
   giroFrameId = requestAnimationFrame(loop);
-  
+
 }
 
 function parar() {
@@ -391,16 +391,20 @@ function suave() {
         document.body.classList.remove('painel-oculto');
         btnMostrar.style.display = 'none';
 
+        timer = null;
+        roleta.style.borderColor = '#f6f0f3ff';
+        roleta.style.boxShadow = `0 0 0px #ffffffff`;
+        roleta.style.backgroundColor = 'transparent';
+        painel.style.boxShadow = `0 0 0px #ffffffff`;
+        fundo.style.background = '#000000b8';
 
-      clearInterval(intervaloId);
-      intervaloId = null;
-      roleta.style.borderColor = '#f6f0f3ff';
-      roleta.style.boxShadow = `0 0 0px #ffffffff`;
-      roleta.style.backgroundColor = 'transparent';
-      painel.style.boxShadow = `0 0 0px #ffffffff`;
-      fundo.style.background = '#000000b8';
-    
       }, 2000);
+      const intervaloId = localStorage.getItem("interval")
+      setTimeout(() => {
+        clearInterval(intervaloId)
+        intervaloId = null;
+
+      }, 1900);
       destacar(i);
       mostrarVencedor(v);
     }
@@ -456,8 +460,8 @@ function atualizarCentro() {
 
   const total = nomes.length;
 
-  const min = 10;   
-  const max = 160;  
+  const min = 10;
+  const max = 160;
 
   // crescimento suave
   let tamanho = min + total * 0.6;
@@ -532,21 +536,30 @@ function salvarVencedores() {
 }
 
 function mostrarVencedor(nm) {
-  overlay.textContent = ` 👉${nm}👈 `;
+  overlay.textContent = `🎉✨🎈 ${nm} 🎉✨🎈 `;
   overlay.classList.remove('mostrar');
   void overlay.offsetWidth;
+  const texto = overlay.textContent.trim();
+  if (nm.length > 10) {
+    overlay.style.fontSize = "15px"
+  } else if (nm.length <= 10) {
+    overlay.style.fontSize = "30px"
+  }
   overlay.classList.add('mostrar');
   clearTimeout(overlay._timeoutId);
   overlay._timeoutId = setTimeout(() => {
     overlay.classList.remove('mostrar');
     overlay.textContent = '';
-  }, 4000);
+  }, 400000);
   vencedores.push(nm);
   salvarVencedores();
 }
 
+
+
+
 function limpar() {
-  if (!confirm('Tem certeza que deseja limpar tudo?')) return;
+  if (!confirm('Tem certeza que deseja limpar tudo leozao?')) return;
   nomes = [];
   cores = [];
   localStorage.removeItem(PREFIX + 'nomes');
@@ -632,8 +645,14 @@ document.getElementById('btnLimparVencedores').onclick = () => {
   vencedores = [];
   salvarVencedores();
 };
+const adicao = document.getElementById("btnAdicionar")
 
-nome.addEventListener('keyup', e => {
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') adicionar();
+});
+
+
+nome.addEventListener('keyup', (e) => {
   if (e.key === 'Enter') adicionar();
 });
 
