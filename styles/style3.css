@@ -1,0 +1,40 @@
+ body {
+     margin: 0;
+     overflow: auto;
+ }
+
+ #dvd {
+     width: 320px;
+     height: 320px;
+     border-radius: 50%;
+     background-size: cover;
+     background-position: center;
+     position: fixed;
+     top: 100px;
+     left: 100px;
+     display: none;
+     opacity: 1;
+     z-index: -1;
+ }
+
+ #toggleDVD {
+     width: 20px;
+     height: 20px;
+
+ }
+
+ #toggleDVD[type="checkbox"] {
+     accent-color: rgb(194, 30, 172);
+     text-align: center;
+ }
+
+ .label-div-mov {
+     position: fixed;
+     top: 10px;
+     height: 20px;
+     font-size: 14px;
+     left: 10px;
+     color: white;
+     font-family: sans-serif;
+     text-align: center;
+ }
