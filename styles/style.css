@@ -21,7 +21,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url('/img/leoeisa.png') center/cover no-repeat;
+  background: url('../img/leoeisa.png') center/cover no-repeat;
   filter: blur(4px) brightness(0.6);
   z-index: -2;
   transition: all 0.7s;
@@ -130,7 +130,7 @@ button:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/img/will.png");
+  background-image: url("../img/will.png");
   background-size: contain;
   background-position: top;
   background-repeat: no-repeat;
@@ -335,7 +335,7 @@ body.painel-oculto .layout {
 }
 
 body.painel-oculto::before {
-  background-image: url("/img/back.png");
+  background-image: url("../img/back.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
