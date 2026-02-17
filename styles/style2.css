@@ -40,8 +40,6 @@
     margin: 20px;
 }
 
-
-
 .btnembaralhar {
     background-color: rgba(219, 109, 14, 0.854);
 
@@ -58,14 +56,10 @@
     transform: translate(-50%, -50%);
     pointer-events: none;
     transition: width 0.25s ease, height 0.25s ease;
-
-
 }
 
-
-
 .centrochat {
-    background-image: url("gato1.png");
+    background-image: url("/img/gato1.png");
     background-size: contain;
 
 
