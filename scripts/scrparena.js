@@ -41,7 +41,7 @@ const channelName = "luyan_tamec";
 
 const USER_COOLDOWN = 15000; // 15s por usuário
 const GLOBAL_COOLDOWN = 2000; // 2s entre spawns globais
-const MAX_BONECOS = 50;
+const MAX_BONECOS = 20;
 
 /* ========================================== */
 
@@ -154,9 +154,9 @@ function update() {
         const img = data.element.querySelector("img");
 
         if (data.vx > 0) {
-            img.style.transform = "scaleX(1)";
-        } else {
             img.style.transform = "scaleX(-1)";
+        } else {
+            img.style.transform = "scaleX(1)";
         }
 
         data.element.style.left = data.x + "px";
