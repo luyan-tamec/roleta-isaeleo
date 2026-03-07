@@ -5,11 +5,16 @@
   <meta charset="utf-8" />
   <title>Roleta Rindo e Apoiando!</title>
   <link rel="stylesheet" href="styles/style.css">
-  
+  <link rel="stylesheet" href="styles/stylearena.css">
+  <script src="scripts/tmi.min.js"></script>
+
+
 </head>
 
 <body id="fundo">
+
   <div class="layout">
+    <div id="arena"></div>
 
     <div class="painel">
 
@@ -83,18 +88,23 @@
       <canvas id="roleta"></canvas>
       <img src="img/centro.png" class="centro">
       <div id="chatBox">
-        <iframe class="centrochat" src="chat.html" frameborder="0"></iframe>
+        <iframe class="centrochat" src="/html/chat.html" frameborder="0"></iframe>
       </div>
       <div class="resultover"></div>
       <div id="resultadoOverlay"></div>
     </div>
   </div>
+
   <button id="btnMostrarPainel" style="display:none;">
     📋 Mostrar Painel
   </button>
 
+
+
   <script src="scripts/script.js"></script>
   <script src="scripts/script2.js"></script>
+   <script src="scripts/scrparena.js"></script>
+
 </body>
 
 </html>
