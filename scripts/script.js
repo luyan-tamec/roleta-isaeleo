@@ -409,7 +409,7 @@ function suave() {
         fundo.style.background = '#000000b8';
 
       }, 2000);
-      const intervaloId = localStorage.getItem("interval")
+      let intervaloId = localStorage.getItem("interval")
       setTimeout(() => {
         clearInterval(intervaloId)
         intervaloId = null;
