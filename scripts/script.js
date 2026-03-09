@@ -11,7 +11,7 @@ const lista = document.getElementById('listaNomes');
 const csv = document.getElementById('inputCSV');
 
 const imagemCentro = new Image();
-imagemCentro.src = 'centro.png';
+imagemCentro.src = '../img/centro.png';
 
 
 const paletaNeutra = ["#fafafa", "#f5f5f5", "#f0f0f0", "#ebebeb", "#e0e0e0", "#d7d7d7", "#cfcfcf", "#c7c7c7", "#bdbdbd", "#b3b3b3", "#a9a9a9", "#9e9e9e", "#8f8f8f", "#858585", "#7d7d7d", "#757575", "#6e6e6e", "#666666", "#5e5e5e", "#faf8f5", "#f2eee8", "#e9e4da", "#ded7cc", "#d2cbbe", "#c7c0b4", "#bcb5a9", "#b0a99f", "#a59e95", "#9a938a", "#8f887f", "#847d75", "#7a6f6a", "#6f645e", "#645952", "#5a4f48", "#f2f4f7", "#eceff2", "#e6e9ed", "#dfe3e8", "#d9dde2", "#d1d6dc", "#ccd1d6", "#c5cbd2", "#c0c5cb", "#b8bfc7", "#b3b9c0", "#adb3ba", "#a7adb4", "#a1a7ae", "#9aa1a9", "#949aa3", "#8e959d", "#878e96", "#828992", "#7b828b", "#767d86", "#707780", "#6a717a", "#646b74", "#fbfaf8", "#f8f6f3", "#f3f1ed", "#eeeae6", "#e9e5df", "#e3ded8", "#ddd8d2", "#d7d2cc", "#cfc7c0", "#e2ae81ff", "#bdb5ae", "#5b68a7ff", "#aba39c", "#a29a93", "#84481bff", "#908781"];
@@ -29,7 +29,7 @@ let vencedores = JSON.parse(localStorage.getItem(PREFIX + 'vencedores') || '[]')
 let volumeTick = parseFloat(localStorage.getItem(PREFIX + 'volumeTick') || '0.12');
 
 
-const somVencedor = new Audio("vencedor.mp3");
+const somVencedor = new Audio("../audios/vencedor.mp3");
 somVencedor.volume = 0.100;
 
 function corAleatoria() {
@@ -100,7 +100,7 @@ function playStopSound() {
   } catch (e) { }
 }
 
-const musica = new Audio('musica.mp3');
+const musica = new Audio('../audios/musica.mp3');
 musica.loop = true;
 const volSalvo = localStorage.getItem(PREFIX + 'volumeMusica');
 if (volSalvo) musica.volume = parseFloat(volSalvo);
@@ -319,6 +319,15 @@ function girar() {
     alert('Adicione pelo menos um nome.');
     return;
   }
+
+  const meucheckmusic = document.getElementById("meucheckmusic")
+  if (meucheckmusic.checked) {
+    document.getElementById("btnMusica").click()
+    musica.currentTime = 5;
+
+  }
+
+
   if (girando) return;
   overlay.classList.remove('mostrar');
   dur = (parseInt(tempo.value) || 5) * 1000;
@@ -346,6 +355,7 @@ function girar() {
     desenhar();
     giroFrameId = requestAnimationFrame(loop);
   }
+
   giroFrameId = requestAnimationFrame(loop);
 
 }
@@ -652,10 +662,6 @@ document.addEventListener('keydown', (e) => {
 });
 
 
-nome.addEventListener('keyup', (e) => {
-  if (e.key === 'Enter') adicionar();
-});
-
 window.remover = remover;
 
 function carregar() {
@@ -681,9 +687,3 @@ window.addEventListener('resize', ajustarCanvas);
 
 ajustarCanvas();
 carregar();
-
-
-
-
-
-

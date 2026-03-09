@@ -19,32 +19,51 @@
     <div class="painel">
 
       <div class="cartao" id="painel">
-        <h1 id="titulo" class="titulo" style="margin:20px">Roleta Rindo e Apoiando!!</h1>
+        <h1 id="titulo" class="titulo" style="margin:20px; font-size:14px;">roulette laughing and supporting!!</h1>
 
         <div class="controls">
-          <button id="btnOcultarPainel" style="height: 38px;">🙈 Ocultar Painel</button>
-          <input class="caixacheck" type="checkbox" id="meucheck" checked>
-          <label for="meucheck">ocultar <br> painel <br>automaticamente</label>
-          <button id="btnTema">Tema</button>
-          <select id="modoCor">
-            <option value="colorido" selected>🏳‍🌈 cores do vale</option>
-            <option value="neutro">⚪ cores Neutras</option>
-          </select>
-          <button id="toggleChat">Mostrar Chat</button>
+          <button id="esconder-btn-top" class="esconder-btn">mais opçoes🔽</button>
+          <div id="bloco-top" class="bloco-top">
+            <button id="btnOcultarPainel" style="height: 38px;">🙈 Ocultar Painel</button>
+            <input class="caixacheck" type="checkbox" id="meucheck" checked>
+            <label for="meucheck">ocultar <br> painel <br>automaticamente</label>
+            <button id="btnTema">Tema</button>
+            <select id="modoCor">
+              <option value="colorido" selected>🏳‍🌈 cores do vale</option>
+              <option value="neutro">⚪ cores Neutras</option>
+            </select>
+            <button id="toggleChat">Mostrar Chat</button>
+          </div>
+
           <div class="blocoessencial">
+
             <input id="nome" type="text" placeholder="Digite um nome">
             <input id="quantidade" type="number" min="1" value="" placeholder="quantidade" style="width:80px;">
             <button id="btnAdicionar">Adicionar</button>
             <input id="tempo" type="number" min="1" placeholder="Tempo (seg)" style="width:110px;">
+
             <button class="btnembaralhar" id="btnEmbaralhar">🔀 Embaralhar</button>
             <button id="btnIniciar" style="background-color:#43a047;color:#fff;" onclick="iniciar()">Iniciar</button>
-            <button id="btnParar" style="background-color:#e53935;color:#fff;">Parar</button>
+            <button id="btnParar" style="background-color:#e53935;color:#fff;">Parar</button><br>
+            <input class="caixacheckmusic" type="checkbox" id="meucheckmusic" checked>
+            <label for="meucheckmusic">Tocar musica ao Iniciar</label>
+            <button class="musica" id="btnMusica">🎵 Tocar Música</button>
+            <button id="btnFullscreen">🖥️ Tela Cheia</button>
 
+            <button id="btnLimpar">🧹 Limpar Tudo</button>
+            <label style="display:flex;align-items:center;gap:6px;color:#ccc;">
+              🔊vol.musica
+              <input type="range" id="volumeMusica" min="0" max="10" value="1" style="width:120px;">
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;color:#ccc; letter-spacing: 3px;">
+              🔔vol.seta
+              <input type="range" id="volTick" min="0" max="10" value="10" style="width:120px;">
+            </label>
           </div>
         </div>
 
-
-        <div class="extras">
+        <button id="esconder-btn" class="esconder-btn">mais opçoes🔽</button>
+        <div class="extras" id="extra">
           <input type="file" id="inputCSV" accept=".csv" style="display:none;">
           <button id="btnImportar">📥 Importar CSV</button>
 
@@ -56,19 +75,6 @@
           </select>
 
           <button id="btnExportar">📤 Exportar CSV</button>
-          <button id="btnFullscreen">🖥️ Tela Cheia</button>
-          <button id="btnLimpar">🧹 Limpar Tudo</button>
-
-          <button class="musica" id="btnMusica">🎵 Tocar Música</button>
-
-          <label style="display:flex;align-items:center;gap:6px;color:#ccc;">
-            🔊vol.musica
-            <input type="range" id="volumeMusica" min="0" max="10" value="1" style="width:120px;">
-          </label>
-          <label style="display:flex;align-items:center;gap:6px;color:#ccc;">
-            🔔vol.seta----
-            <input type="range" id="volTick" min="0" max="10" value="10" style="width:120px;">
-          </label>
 
         </div>
       </div>
@@ -103,7 +109,7 @@
 
   <script src="scripts/script.js"></script>
   <script src="scripts/script2.js"></script>
-   <script src="scripts/scrparena.js"></script>
+  <script src="scripts/scrparena.js"></script>
 
 </body>
 

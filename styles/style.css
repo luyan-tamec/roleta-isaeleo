@@ -126,7 +126,7 @@ button:hover {
   z-index: 200;
 }
 
-#listaNomes::before {
+/*#listaNomes::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -136,24 +136,25 @@ button:hover {
   background-repeat: no-repeat;
   opacity: 0.5;
   z-index: -2;
-}
+}*/
 
 
-#listaNomes::after {
+/*#listaNomes::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-}
+}*/
 
 .tagNome {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.17);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 10px;
-  padding: 6px 10px;
+  padding: 5px 12px;
   display: flex;
   align-items: center;
-  gap: 7px;
+  align-self: flex-start;
+  gap: 6px;
 }
 
 .tagNome button {
@@ -174,11 +175,7 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-#container:hover {
-  cursor: pointer;
-
+  user-select: none;
 }
 
 .seta {
@@ -204,8 +201,7 @@ canvas {
 canvas:hover {
   border-color: #e012d6;
   box-shadow: 0 0 60px #f0e7ef;
-  cursor: pointer;
-  transition: 1000ms;
+
 }
 
 #resultadoOverlay {
@@ -362,129 +358,178 @@ body.painel-oculto #container {
 }
 
 #btnLeft {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    padding: 10px 10px;
-    background: rgb(239, 10, 209, 0.5);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 15px;
-    font-size: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    z-index: 9999;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 10px;
+  background: rgb(239, 10, 209, 0.5);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 15px;
+  font-size: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
 }
 
 #btnLeft2 {
-    position: fixed;
-    top: 70px;
-    left: 20px;
-    padding: 10px 5px;
-    background: rgb(239, 10, 209, 0.5);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 15px;
-    font-size: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    z-index: 9999;
+  position: fixed;
+  top: 70px;
+  left: 20px;
+  padding: 10px 5px;
+  background: rgb(239, 10, 209, 0.5);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 15px;
+  font-size: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
 }
 
 .cartao {
-    background-color: rgba(0, 0, 0, 0.526);
-    border: solid 1px rgba(174, 159, 159, 0.795);
-    border-radius: 30px;
-    margin: 20px;
+  background-color: rgba(0, 0, 0, 0.526);
+  border: solid 1px rgba(174, 159, 159, 0.795);
+  border-radius: 30px;
+  margin: 20px;
 }
 
 .cartaonomes {
-    background-color: rgba(16, 10, 10, 0.836);
-    border: solid 2px rgba(174, 159, 159, 0.795);
-    border-radius: 30px;
-    margin: 20px;
+  background-color: rgba(73, 66, 66, 0.733);
+  /*border: solid 2px rgba(174, 159, 159, 0.795);*/
+  border-radius: 30px;
+  margin: 20px;
 }
 
 .btnembaralhar {
-    background-color: rgba(219, 109, 14, 0.854);
+  background-color: rgba(219, 109, 14, 0.854);
 
 }
 
 .centro {
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    border: #ffffff solid 1px;
-    border-radius: 50%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    transition: width 0.25s ease, height 0.25s ease;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border: #ffffff solid 1px;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: width 0.25s ease, height 0.25s ease;
 }
 
 .centrochat {
-    background-image: url("../img/gato1.png");
-    background-size: contain;
+  background-image: url("../img/gato1.png");
+  background-size: contain;
 
-
-    position: absolute;
-    width: 300px;
-    height: 110px;
-    border: #050505 solid 2px;
-    border-radius: 10%;
-    left: 50%;
-    top: 90%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    transition: width 0.25s ease, height 0.25s ease;
+  position: absolute;
+  width: 300px;
+  height: 110px;
+  border: #050505 solid 2px;
+  border-radius: 10%;
+  left: 50%;
+  top: 90%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: width 0.25s ease, height 0.25s ease;
 }
 
 #chatBox {
-    display: none;
+  display: none;
 
 }
 
 iframe {
 
-    width: 100%;
+  width: 100%;
 }
 
 .blocoessencial {
-    background-color: rgba(204, 38, 38, 0);
-    border: solid 4px rgb(255, 255, 255, 0.2);
-    border-radius: 30px;
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-    margin-bottom: 15px;
-    margin: 1px;
+  background-color: rgba(204, 38, 38, 0);
+  border: solid 4px rgb(255, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 15px;
+  margin: 1px;
 }
 
 .caixacheck+label {
-    font-size: 12px;
-    line-height: 12px;
-    text-align: left;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: left;
 
 
 }
 
 .caixacheck {
-    width: 20px;
-    height: 25px;
-    margin: 1px;
-    margin-top: 6px;
+  width: 20px;
+  height: 25px;
+  margin: 1px;
+  margin-top: 6px;
 
 
 }
 
 .caixacheck+label {
-    color: #ffffff;
-    user-select: none;
+  color: #ffffff;
+  user-select: none;
 
 }
 
 input[type="checkbox"] {
-    accent-color: #d108ac;
-    cursor: pointer;
+  accent-color: #d108ac;
+  cursor: pointer;
+}
+
+.esconder {
+  display: none;
+}
+
+.esconder-btn {
+  display: flex;
+  background-color: rgba(165, 9, 121, 0.854);
+  justify-self: center;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 10px;
+  opacity: 0.6;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.bloco-top {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  transition: all 1s ease;
+}
+
+.caixacheckmusic {
+  width: 20px;
+  height: 20px;
+  margin: 1px;
+  margin-top: 6px;
+
+}
+
+label[for="meucheckmusic"] {
+  font-size: 10px;
+  background-color: rgba(210, 33, 140, 0.854);
+  text-align: center;
+  align-self: center;
+  align-content: center;
+  color: #ffffff;
+  user-select: none;
+  border-radius: 10px;
+  margin: 2px;
+  height: 22px;
 }

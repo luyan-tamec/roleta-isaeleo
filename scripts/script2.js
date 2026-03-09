@@ -73,3 +73,30 @@ btninicio.addEventListener('click', () => {
 
   }
 });
+
+const extra = document.getElementById("extra");
+extra.className = "esconder"
+
+const esconder_btn = document.getElementById("esconder-btn");
+
+
+esconder_btn.addEventListener("click", () => {
+  if (extra.classList == "esconder") {
+    extra.className = "extras"
+  } else if (extra.classList == "extras") {
+    extra.className = "esconder"
+  }
+})
+const bloco_top = document.getElementById("bloco-top");
+bloco_top.className = "esconder"
+
+const esconder_btn_top = document.getElementById("esconder-btn-top");
+
+
+esconder_btn_top.addEventListener("click", () => {
+  if (bloco_top.classList == "esconder") {
+    bloco_top.className = "extras"
+  } else if (bloco_top.classList == "extras") {
+    bloco_top.className = "esconder"
+  }
+})
