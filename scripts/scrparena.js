@@ -40,8 +40,8 @@ const BONECOS_LIST = [
 const channelName = "luyan_tamec";
 
 const USER_COOLDOWN = 15000; // 15s por usuário
-const GLOBAL_COOLDOWN = 2000; // 2s entre spawns globais
-const MAX_BONECOS = 20;
+const GLOBAL_COOLDOWN = 3000; // 2s entre spawns globais
+const MAX_BONECOS = 30;
 
 /* ========================================== */
 
@@ -50,6 +50,15 @@ const arena = document.getElementById("arena");
 const activeUsers = new Map();      // usuário -> boneco
 const userCooldowns = new Map();    // usuário -> timestamp
 let lastGlobalSpawn = 0;
+
+/* ================= Z-INDEX DA ARENA OU DIV ================= */
+const pos_bonecos = document.getElementById("indexboneco");
+
+pos_bonecos.addEventListener("change",()=>{
+    arena.style= `${pos_bonecos.value}`
+})
+
+
 
 /* ================= TMI ================= */
 

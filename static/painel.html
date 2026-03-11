@@ -17,38 +17,38 @@
     </div>
 </body>
 <script>
-     const url = "https://script.google.com/macros/s/AKfycbzYf3Zubn3pMo2eziZAklooPI4TeOvCMoRGmURD7_QulRL4RI41nW_UzbMnUoe2JN5r/exec";
+    const url = "N/A";
 
     function send() {
         const img_main = document.getElementById("img_main");
         const img_centro = document.getElementById("img_centro");
         const img_oculta = document.getElementById("img_oculta");
 
-       
+        const TOKEN = "N/A"
 
         fetch(url, {
-            method: "POST",
-            
-            body: JSON.stringify({
-                action: "create",
-                id:"",
-                titulo: img_main.value,
-                video_url: img_centro.value,
-                thumbnail: img_oculta.value,
-            })
-        }).then(console.log("upado"));
-    }
-
-     function removeItem(id) {
-            fetch(url, {
                 method: "POST",
-
+                
                 body: JSON.stringify({
-                    action: "delete",
-                    id: id
+                    token: TOKEN,
+                    action: "create",
+                    titulo: img_main.value,
+                    video_url: img_centro.value,
+                    thumbnail: img_oculta.value
                 })
-            }).then(console.log("apagado"));
+            }).then(console.log("upei"));
         }
+
+    function removeItem(id) {
+        fetch(url, {
+            method: "POST",
+
+            body: JSON.stringify({
+                action: "delete",
+                id: id
+            })
+        }).then(console.log("apagado"));
+    }
 
 
 
