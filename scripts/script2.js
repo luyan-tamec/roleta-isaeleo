@@ -48,7 +48,7 @@ btnparar = document.getElementById('btnParar');
 
 btninicio.addEventListener('click', () => {
   const checkOcultar = document.getElementById('meucheck');
-  const nomes = JSON.parse(localStorage.getItem(PREFIX + 'nomes') || '[]');
+  const nomes = JSON.parse(localStorage.getItem(PREFIX + 'nomes'));
 
   if (checkOcultar.checked) {
     if (nomes) {

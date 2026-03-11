@@ -318,47 +318,47 @@ function girar() {
   if (nomes.length < 1) {
     alert('Adicione pelo menos um nome.');
     return;
-  }
-
-  const meucheckmusic = document.getElementById("meucheckmusic")
-  if (meucheckmusic.checked) {
-    document.getElementById("btnMusica").click()
-    musica.currentTime = 5;
-
-  }
-
-
-  if (girando) return;
-  overlay.classList.remove('mostrar');
-  dur = (parseInt(tempo.value) || 5) * 1000;
-  vel = Math.random() * 0.35 + 0.5;
-  girando = true;
-  ultimo = null;
-  const inicio = performance.now();
-  let last = inicio;
-  function loop(now) {
-    const delta = now - last;
-    last = now;
-    const d = now - inicio;
-    const scale = delta / 18;
-    if (d < dur * 0.65) {
-      angulo += vel * scale;
-    } else if (d < dur) {
-      vel *= Math.pow(0.98, scale);
-      angulo += vel * scale;
-    } else {
-      girando = false;
-      suave();
-      return;
+  } else if (nomes.length >= 1) {
+    if (girando) return;
+    overlay.classList.remove('mostrar');
+    dur = (parseInt(tempo.value) || 5) * 1000;
+    vel = Math.random() * 0.35 + 0.5;
+    girando = true;
+    ultimo = null;
+    const inicio = performance.now();
+    let last = inicio;
+    function loop(now) {
+      const delta = now - last;
+      last = now;
+      const d = now - inicio;
+      const scale = delta / 18;
+      if (d < dur * 0.65) {
+        angulo += vel * scale;
+      } else if (d < dur) {
+        vel *= Math.pow(0.98, scale);
+        angulo += vel * scale;
+      } else {
+        girando = false;
+        suave();
+        return;
+      }
+      tick();
+      desenhar();
+      giroFrameId = requestAnimationFrame(loop);
     }
-    tick();
-    desenhar();
+    const meucheckmusic = document.getElementById("meucheckmusic")
+    if (meucheckmusic.checked) {
+      document.getElementById("btnMusica").click()
+      musica.currentTime = 5;
+
+    }
+
     giroFrameId = requestAnimationFrame(loop);
+
   }
 
-  giroFrameId = requestAnimationFrame(loop);
 
-}
+};
 
 function parar() {
   if (girando) {
