@@ -315,16 +315,14 @@ canvas.addEventListener('mouseup', () => {
 });
 
 function girar() {
+  if (nomes.length < 1) {
+    alert('Adicione pelo menos um nome.');
+    return;
+  }
   const meucheckmusic = document.getElementById("meucheckmusic")
   if (meucheckmusic.checked) {
     document.getElementById("btnMusica").click()
     musica.currentTime = 5;
-  }
-
-
-  if (nomes.length < 1) {
-    alert('Adicione pelo menos um nome.');
-    return;
   }
   if (girando) return;
   overlay.classList.remove('mostrar');
