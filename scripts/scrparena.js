@@ -54,8 +54,8 @@ let lastGlobalSpawn = 0;
 /* ================= Z-INDEX DA ARENA OU DIV ================= */
 const pos_bonecos = document.getElementById("indexboneco");
 
-pos_bonecos.addEventListener("change",()=>{
-    arena.style= `${pos_bonecos.value}`
+pos_bonecos.addEventListener("change", () => {
+    arena.style = `${pos_bonecos.value}`
 })
 
 /* ================= TMI ================= */
