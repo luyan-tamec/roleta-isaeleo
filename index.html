@@ -54,24 +54,28 @@
             <button id="btnParar" style="background-color:#e53935;color:#fff;">Parar</button><br>
             <section style="width: 90%;">
               <select name="sons" id="sons" style="width: 100%;">
-                <option value="0" selected>Silvio Santos</option>
-                <option value="1">eleva-me</option>
-                <option value="2">Como zaquel</option>
-                <option value="3">assererre</option>
-                <option value="4">assererre</option>
-                <option value="5">assererre</option>
-                <option value="6">assererre</option>
-                <option value="7">assererre</option>
-                <option value="8">assererre</option>
+                <option value="0" selected>Silvio Santos (padrao)</option>
+                <option value="1">Sou humano (gospel)</option>
+                <option value="2">Como zaquel (gospel)</option>
+                <option value="3">Noites traiçoeiras (gospel)</option>
+                <option value="4">Ragatanga</option>
+                <option value="5">we are the champions</option>
+                <option value="6">Rock balboa</option>
+                <option value="7">Rock balboa 2</option>
+                <option value="8">psy-Gangnam style</option>
+                <option value="9">Roleta Vira e Volta (Sei lá)</option>
+                <option value="10">Missao impossivel (filme)</option>
+                <option value="11">Quem é esse ? (gospel)</option>
+                <option value="12">Musica Sorteio (Padrao meee)</option>
               </select><br>
-            <div class="div-check-music" alt="TOCAR MUSICA AO GIRAR" title="">
-              <input class="caixacheckmusic" type="checkbox" id="meucheckmusic" checked>
-              <label for="meucheckmusic"></label>
-              <span class="tooltip-text">Tocar musica ao girar</span>
-            </div>
-            
+              <div class="div-check-music" alt="TOCAR MUSICA AO GIRAR" title="">
+                <input class="caixacheckmusic" type="checkbox" id="meucheckmusic" checked>
+                <label for="meucheckmusic"></label>
+                <span class="tooltip-text">Tocar musica ao girar</span>
+              </div>
+
               <input type="range" min="0" value="0" max="360" id="tempo-msc" class="tempo-msc" style="width: 80%;">
-              <label  id="span-tempo" for="tempo-msc">Tempo da Musica</label>
+              <label id="span-tempo" for="tempo-msc">Tempo da Musica</label>
               <button id="btn" style="display: none;">Play</button>
               <input type="range" name="Volume" id="input-vol" min="0" value="2" max="100" style="display: none;">
               <div id="render"></div>
