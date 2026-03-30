@@ -616,3 +616,43 @@ option{
   font-family: monospace;
   font-weight: 300;
 }
+
+.botaomenu{
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 12px;
+  background: linear-gradient(45deg, #e012d6, #ff4da6);
+  color: #fff;
+  cursor: pointer;
+  z-index: 500;
+}
+
+.menusidebar{
+  display: none;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.584);
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100%;
+  
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  transform: translateX(0);
+  transition: transform 1s ease;
+  overflow: auto;
+  z-index: 400;
+  transition: display 2s ease;
+}
+
+
+.controls-side {
+  display: flex;
+  margin-top: 50px;
+  flex-direction:column;
+  gap: 10px;
+}

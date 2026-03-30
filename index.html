@@ -13,11 +13,63 @@
 </head>
 
 <body id="fundo">
+  <!----------------------Menu Sidebar---------------------------------------------->
+  <button class="botaomenu" onclick="toggleMenu()">Youtube</button>
+  <div id="menu" class="menusidebar">
+    <div class="controls-side">
+        <input type="text" id="busca" placeholder="Digite sua busca">
+        <button onclick="buscarVideos()">Buscar Vídeos</button>
+      <div id="videos"></div>
+    </div>
+    <script>
+      const apiKey = "AIzaSyCj87q-ilzHmin-9TZnZ6JWa3JvBi7mH80";
+      let busca = "";
+
+      function buscarVideos() {
+        busca = document.getElementById("busca").value;
+        const resultado = busca.replace(/\s+/g, "+");
+        console.log(resultado);
+        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${resultado}&key=${apiKey}&maxResults=3`)
+          .then(res => res.json())
+          .then(data => {
+            const div = document.getElementById("videos");
+            div.innerHTML = ` `;
+            data.items.forEach(video => {
+
+              const videoId = video.id.videoId;
+              const iframe = document.createElement("iframe");
+              iframe.width = "100%";
+              iframe.height = "300";
+              iframe.src = `https://www.youtube.com/embed/${videoId}`;
+              iframe.frameBorder = "0";
+              iframe.allowFullscreen = true;
+
+              const title = document.createElement("p");
+              title.textContent = video.snippet.title;
+
+              div.appendChild(iframe);
+              div.appendChild(title);
+            });
+          });
+        document.getElementById("busca").value = "";
+
+      }
+
+      function toggleMenu() {
+        const menu = document.getElementById("menu");
+        if (menu.style.display === "none" || menu.style.display === "") {
+          menu.style.display = "block";
+
+        } else {
+          menu.style.display = "none";
+        }
+      }
+    </script>
+  </div>
+  <!-- ------------------------------------------------------------------------------>
   <div class="layout">
     <div id="arena"></div>
-
     <div class="painel">
-
       <div class="cartao" id="painel">
         <h1 id="titulo" class="titulo" style="margin:20px; font-size:14px;">roulette laughing and supporting!!</h1>
         <!------------------------------------------------------------------------------------------------->
@@ -52,7 +104,8 @@
             <button id="btnIniciar" style="background-color:#43a047;color:#fff;" onclick="iniciar()">Iniciar</button>
             <button id="btnParar" style="background-color:#e53935;color:#fff;">Parar</button><br>
             <section style="width: 90%;">
-              <select name="sons" id="sons" style="width: 100%; background-color: rgb(120, 8, 88); color: white; overflow: auto;" >
+              <select name="sons" id="sons"
+                style="width: 100%; background-color: rgb(120, 8, 88); color: white; overflow: auto;">
                 <option value="0" selected>Silvio Santos (padrao)</option>
                 <option value="1">Sou humano (gospel)</option>
                 <option value="2">Como zaquel (gospel)</option>
