@@ -75,14 +75,14 @@ canvas.addEventListener('mouseup', () => {
 });
 
 function girar() {
+ 
   if (nomes.length < 1) {
     alert('Adiciona um nome Aê Paizao.');
     return;
   }
   const meucheckmusic = document.getElementById("meucheckmusic")
   if (meucheckmusic.checked) {
-    document.getElementById("btnMusica").click()
-    musica.currentTime = 5;
+    document.getElementById("btnMusica").click();
   }
   if (girando) return;
   overlay.classList.remove('mostrar');
@@ -112,7 +112,8 @@ function girar() {
     giroFrameId = requestAnimationFrame(loop);
   }
   giroFrameId = requestAnimationFrame(loop);
-
+  musica.play()
+  musica.currentTime=inputTempo.value
 }
 
 function parar() {

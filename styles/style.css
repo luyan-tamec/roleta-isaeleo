@@ -22,7 +22,7 @@ body::before {
   position: fixed;
   inset: 0;
   background: url('../img/leoeisa.png') center/cover no-repeat;
-  
+
   filter: blur(2px) brightness(0.6);
   z-index: -2;
   transition: all 0.7s;
@@ -474,7 +474,7 @@ body.painel-oculto #container {
 
 #chatBox {
   display: none;
-  
+
 
 
 }
@@ -482,7 +482,7 @@ body.painel-oculto #container {
 iframe {
 
   width: 100%;
-  
+
 }
 
 .blocoessencial {
@@ -584,15 +584,15 @@ footer {
 
 }
 
-section{
+section {
   position: relative;
 }
 
-#span-tempo{
+#span-tempo {
   width: 50%;
   position: absolute;
   visibility: hidden;
-  transform: translate(-180px ,-20px);
+  transform: translate(-180px, -20px);
   background-color: #000;
   color: #d108ac;
   margin: auto;
@@ -601,7 +601,11 @@ section{
   font-size: 14px;
 }
 
-.tempo-msc:hover{
-accent-color: pink;
+#tempo-msc {
+  accent-color: #d6098e;
 
+  &:hover {
+    accent-color: rgb(184, 27, 171);
+
+  }
 }

@@ -166,7 +166,7 @@ let tocandoMusica = false;
 
 document.getElementById('btnMusica').onclick = () => {
   const musicaSelecionada = musicas[select.value];
-  if(tocandoMusica) return
+
   if (musicaAtual !== musicaSelecionada) {
     musica.src = musicaSelecionada;
     musicaAtual = musicaSelecionada;
