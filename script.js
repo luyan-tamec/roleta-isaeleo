@@ -106,10 +106,10 @@ const botao = document.getElementById("btn");
 
 
 let musicas = [
-  "musica1.mp3",
-  "musica2.mp3",
-  "musica3.mp3",
-  "musica4.mp3"
+  "musicas/musica1.mp3",
+  "musicas/musica2.mp3",
+  "musicas/musica3.mp3",
+  "musicas/musica4.mp3"
 ]
 //----------------------------------------------------------------------//
 const musica = new Audio();
@@ -153,6 +153,8 @@ botao.addEventListener("click", function () {
   } else {
     musica.pause();
     botao.textContent = "Play";
+    musica.currentTime=0
+    
   }
 });
 
@@ -164,7 +166,7 @@ let tocandoMusica = false;
 
 document.getElementById('btnMusica').onclick = () => {
   const musicaSelecionada = musicas[select.value];
-
+  if(tocandoMusica) return
   if (musicaAtual !== musicaSelecionada) {
     musica.src = musicaSelecionada;
     musicaAtual = musicaSelecionada;
@@ -180,6 +182,7 @@ document.getElementById('btnMusica').onclick = () => {
     musica.pause();
     botao.textContent = "Play";
     document.getElementById('btnMusica').textContent = '🎵 Tocar Música';
+    musica.currentTime= 0
   }
 };
 
