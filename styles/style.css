@@ -583,3 +583,19 @@ footer {
   padding: 20px;
 
 }
+
+section{
+  position: relative;
+}
+
+#span-tempo{
+  position: absolute;
+  visibility: hidden;
+  transform: translate(-90px ,-60px);
+  background-color: #000;
+  color: #d108ac;
+  margin: auto;
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 14px;
+}

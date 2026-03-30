@@ -42,6 +42,7 @@ btnMostrar.addEventListener('click', () => {
 
 });
 
+
 btninicio = document.getElementById('btnIniciar');
 btnparar = document.getElementById('btnParar');
 
@@ -100,3 +101,14 @@ esconder_btn_top.addEventListener("click", () => {
     bloco_top.className = "esconder"
   }
 })
+
+const span =document.getElementById("tempo-msc");
+const barraTempo= document.getElementById("span-tempo");
+span.addEventListener("mouseenter",()=>{
+    barraTempo.style.visibility="visible"
+})
+span.addEventListener("mouseleave",()=>{
+    barraTempo.style.visibility="hidden"
+})
+
+  
