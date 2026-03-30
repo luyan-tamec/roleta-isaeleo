@@ -99,8 +99,51 @@ function playStopSound() {
   } catch (e) { }
 }
 
-const musica = new Audio('musica.mp3');
-musica.loop = true;
+const select = document.getElementById("sons");
+const inputVol = document.getElementById("input-vol");
+const botao = document.getElementById("btn");
+
+let musicas = [
+    "musica1.mp3",
+    "musica2.mp3",
+    "musica3.mp3",
+    "musica4.mp3"
+]
+//----------------------------------------------------------------------//
+const musica = new Audio();
+let musicaAtual = "";
+
+select.addEventListener("change", function () {
+    musica.src = musicas[select.value];
+    musicaAtual = musica.src;
+    musica.pause();
+    musica.currentTime = 0;
+    botao.textContent = "Play";
+    
+});
+inputVol.addEventListener("input", function () {
+    let vol= inputVol.value /100
+    musica.volume = vol
+    console.log(vol)
+});
+
+botao.addEventListener("click", function () {
+    const musicaSelecionada = musicas[select.value];
+
+    if (musicaAtual !== musicaSelecionada) {
+        musica.src = musicaSelecionada;
+        musicaAtual = musicaSelecionada;
+    }
+
+    if (musica.paused) {
+        musica.play();
+        botao.textContent = "Pause";
+    } else {
+        musica.pause();
+        botao.textContent = "Play";
+    }
+});
+
 const volSalvo = localStorage.getItem(PREFIX + 'volumeMusica');
 if (volSalvo) musica.volume = parseFloat(volSalvo);
 document.getElementById('volumeMusica').value = Math.round(musica.volume * 100);
@@ -108,17 +151,24 @@ document.getElementById('volumeMusica').value = Math.round(musica.volume * 100);
 let tocandoMusica = false;
 
 document.getElementById('btnMusica').onclick = () => {
-  if (!tocandoMusica) {
-    musica.currentTime = 0;
-    musica.play().then(() => {
-      tocandoMusica = true;
-      document.getElementById('btnMusica').textContent = '⏸️ Parar Música';
-    }).catch(() => { });
-  } else {
-    musica.pause()
-    tocandoMusica = false;
-    document.getElementById('btnMusica').textContent = '🎵 Tocar Música';
-  }
+  const musicaSelecionada = musicas[select.value];
+
+    if (musicaAtual !== musicaSelecionada) {
+        musica.src = musicaSelecionada;
+        musicaAtual = musicaSelecionada;
+        
+    }
+
+    if (musica.paused) {
+        musica.play();
+        botao.textContent = "Pause";
+        document.getElementById('btnMusica').textContent = '⏸️ Parar Música';
+
+    } else {
+        musica.pause();
+        botao.textContent = "Play";
+        document.getElementById('btnMusica').textContent = '🎵 Tocar Música';
+    }
 };
 
 document.getElementById('volumeMusica').oninput = e => {
