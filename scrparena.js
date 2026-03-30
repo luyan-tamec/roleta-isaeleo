@@ -1,6 +1,6 @@
 /* ===== CONFIG IMAGENS ===== */
 
-const BONECOS_PATH = "bonecos/"; // pasta raiz dos png
+const BONECOS_PATH = "bonecos/";
 const BONECOS_LIST = [
     "image (1).png",
     "image (2).png",
@@ -35,11 +35,11 @@ const BONECOS_LIST = [
     "image (31).png",
     "image (32).png"
 ];
-/* ================= CONFIG ================= */
 
-const channelName = "luyan_tamec";
 
-const USER_COOLDOWN = 15; // 15s por usuário
+const channelName = "isaroza_";
+
+const USER_COOLDOWN = 15000; // 15s por usuário
 const GLOBAL_COOLDOWN = 5000; // 5s entre spawns globais
 const MAX_BONECOS = 30;
 
@@ -47,8 +47,8 @@ const MAX_BONECOS = 30;
 
 const arena = document.getElementById("arena");
 
-const activeUsers = new Map();      // usuário -> boneco
-const userCooldowns = new Map();    // usuário -> timestamp
+const activeUsers = new Map();    
+const userCooldowns = new Map();  
 let lastGlobalSpawn = 0;
 
 /* ================= Z-INDEX DA ARENA OU DIV ================= */
@@ -58,7 +58,7 @@ pos_bonecos.addEventListener("change", () => {
     arena.style = `${pos_bonecos.value}`
 })
 
-/* ================= TMI ================= */
+/* ================= TMI da conexao ================= */
 
 const client = new tmi.Client({
     connection: { secure: true, reconnect: true },
@@ -80,12 +80,13 @@ client.on("message", (channel, tags, message, self) => {
 function handleJoin(username) {
     const now = Date.now();
 
-    // Anti-spam global
+    // Anti-spam geralzao
     if (now - lastGlobalSpawn < GLOBAL_COOLDOWN) return;
 
-    // Anti-spam individual
+    // Anti-spam
     if (userCooldowns.has(username)) {
         if (now - userCooldowns.get(username) < USER_COOLDOWN) return;
+        
     }
 
     // Limite de 1 boneco por usuário
@@ -100,7 +101,7 @@ function handleJoin(username) {
     lastGlobalSpawn = now;
 }
 
-/* ============== SPAWN ============== */
+/* ============== SPAWNAR ============== */
 
 function spawnBoneco(username) {
 
@@ -138,7 +139,7 @@ function spawnBoneco(username) {
     activeUsers.set(username, data);
 }
 
-/* ============== MOVIMENTO CONTÍNUO ============== */
+/* ============== VAI E VOLTA ============== */
 
 function update() {
 
@@ -157,7 +158,7 @@ function update() {
             data.vy *= -1;
         }
 
-        //ALTERAÇÃO DE LADO AUTOMÁTICA
+        //ALTERAÇÃO DE LADO
         const img = data.element.querySelector("img");
 
         if (data.vx > 0) {

@@ -22,6 +22,7 @@ body::before {
   position: fixed;
   inset: 0;
   background: url('../img/leoeisa.png') center/cover no-repeat;
+  
   filter: blur(2px) brightness(0.6);
   z-index: -2;
   transition: all 0.7s;
@@ -473,12 +474,15 @@ body.painel-oculto #container {
 
 #chatBox {
   display: none;
+  
+
 
 }
 
 iframe {
 
   width: 100%;
+  
 }
 
 .blocoessencial {
