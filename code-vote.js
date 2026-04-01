@@ -8,7 +8,8 @@
     let voters = new Set();
     let capturing = false;
 
-    div.innerHTML = `
+
+    div.innerHTML += `
 
     <button id="toggleBtn" class="start">▶ INICIAR VOTAÇÃO</button>
     <div class="status" id="status">Parado</div>
@@ -32,6 +33,19 @@
     const naoBar = div.querySelector('#naoBar');
     const toggleBtn = div.querySelector('#toggleBtn');
     const status = div.querySelector('#status');
+
+    const linkObs = document.querySelector('#linkobs');
+    const link = "https://luyan-tamec.github.io/roleta-isaeleo/static/index-voto.html";
+    if (linkObs) {
+        linkObs.addEventListener("click", () => {
+            navigator.clipboard.writeText(link);
+            linkObs.textContent= "Link Copiado!"
+            setInterval(() => {
+                linkObs.textContent= "link para overlay obs📋"
+
+            }, 1000);
+        });
+    }
 
     function updateUI() {
         const total = votes.sim + votes.nao || 1;
@@ -112,7 +126,7 @@
 
 const btn_voto = document.getElementById("btn-voto")
 const div = document.getElementById('vote-widget');
-div.className="sumir"
+div.className = "sumir"
 
 btn_voto.addEventListener("click", () => {
     if (div.classList == "sumir") {
