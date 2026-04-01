@@ -106,6 +106,7 @@ const botao = document.getElementById("btn");
 
 
 let musicas = [
+  "musicas/musica0.mp3",
   "musicas/musica1.mp3",
   "musicas/musica2.mp3",
   "musicas/musica3.mp3",
