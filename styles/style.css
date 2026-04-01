@@ -632,21 +632,38 @@ option{
 }
 
 .menusidebar{
-  display: none;
+  display: block;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.584);
   top: 0;
   left: 0;
   width: 320px;
   height: 100%;
-  
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-  transform: translateX(0);
+  transform: translateX(-100%);
   transition: transform 1s ease;
-  overflow: auto;
+  overflow-y: auto;
   z-index: 400;
-  transition: display 2s ease;
+  transition: all 0.7s ease;
+}
+
+.menusidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.menusidebar::-webkit-scrollbar-track {
+  background: #00000023;
+  border-radius: 10px;
+}
+
+.menusidebar::-webkit-scrollbar-thumb {
+  background: #fffdfd;
+  border-radius: 10px;
+}
+
+.menusidebar::-webkit-scrollbar-thumb:hover {
+  background: #da0fd7;
 }
 
 
@@ -655,4 +672,18 @@ option{
   margin-top: 50px;
   flex-direction:column;
   gap: 10px;
+}
+
+.show{
+  transform: translateX(0);
+}
+.cartao-video {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: solid 1px rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 12px 0;
+  gap: 8px;
 }
