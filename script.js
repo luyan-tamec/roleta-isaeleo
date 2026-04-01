@@ -137,6 +137,12 @@ select.addEventListener("change", function () {
   musica.currentTime = 0;
   botao.textContent = "Play";
   musica.loop = true
+  if (document.getElementById('btnMusica').textContent === '🎵 Tocar Música' ) {
+    return
+  } else {
+    document.getElementById('btnMusica').onclick() 
+  }
+  
 
 });
 inputVol.addEventListener("input", function () {
@@ -150,7 +156,6 @@ inputTempo.addEventListener("input", function () {
 let intervaloId = setInterval(() => {
   inputTempo.value = musica.currentTime
   inputTempo.max = musica.duration
-
 }, 1000); 
 
 botao.addEventListener("click", function () {
