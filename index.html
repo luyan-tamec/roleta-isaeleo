@@ -17,8 +17,10 @@
   <button class="botaomenu" onclick="toggleMenu()">Youtube</button>
   <div id="menu" class="menusidebar">
     <div class="controls-side">
-      <input type="text" id="busca" placeholder="Digite sua busca">
+      <div class="busca-container">
+        <input type="text" id="busca" placeholder="Digite sua busca">
       <button onclick="buscarVideos()">Buscar Vídeos</button>
+      </div>
       <div id="videos"></div>
     </div>
     <script>

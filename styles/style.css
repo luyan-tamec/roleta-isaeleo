@@ -673,6 +673,11 @@ option{
   flex-direction:column;
   gap: 10px;
 }
+.busca-container {
+  display: flex;
+  gap: 8px;
+ 
+}
 
 .show{
   transform: translateX(0);
