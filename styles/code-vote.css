@@ -1,7 +1,8 @@
  .votos-widget {
     display: hidden;
+    
         font-family: Arial;
-        width: 280px;
+        width: 260px;
         background: #0e0e1000;
         padding: 15px;
         border-radius: 12px;
@@ -54,4 +55,11 @@
 
       .sumir{
         display: none;
+      }
+
+      #linkobs{
+        opacity: 0.5;
+      }
+      #linkobs:hover{
+        opacity: 1;
       }
