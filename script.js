@@ -117,7 +117,13 @@ let musicas = [
   "musicas/musica9.mp3",
   "musicas/musica10.mp3",
   "musicas/musica11.mp3",
-  "musicas/musica12.mp3"
+  "musicas/musica12.mp3",
+  "musicas/musica13.mp3",
+  "musicas/musica14.mp3",
+  "musicas/musica15.mp3",
+  "musicas/musica16.mp3",
+  "musicas/musica17.mp3"
+
 ]
 //----------------------------------------------------------------------//
 const musica = new Audio();
