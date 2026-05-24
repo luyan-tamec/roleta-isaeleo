@@ -365,10 +365,11 @@ async function abrirModalFilmes() {
         btn.addEventListener("click", e => {
           e.stopPropagation();
           const v = parseInt(btn.dataset.v);
-          qtdPorFilme[f.id] = v;
-          controle.querySelector(".qtd-custom").value = v;
-          controle.querySelectorAll(".btn-preset").forEach(b => b.style.background = "#444");
-          btn.style.background = "#d108ac";
+          const input = controle.querySelector(".qtd-custom");
+          const atual = parseInt(input.value) || 0;
+          const novo = atual + v;
+          input.value = novo;
+          qtdPorFilme[f.id] = novo;
         });
       });
 
